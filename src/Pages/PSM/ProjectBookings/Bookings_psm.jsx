@@ -7,7 +7,7 @@ import axios from "axios";
 import CloseIcon from '@mui/icons-material/Close';
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
-import { getUserLogin } from "../../User_Management/features/userSlice";
+import { getUser, getUserLogin } from "../../User_Management/features/userSlice";
 import { useSelector } from "react-redux";
 import { url1 } from "../../../UI/port";
 
@@ -27,7 +27,10 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
   const [allUserDropdown, setAllUserDropdown] = useState([]);
   const dispatch = useDispatch()
   const LuserData = useSelector((state) => state.userManagement.getUserLogin);
+  const userData = useSelector((state) => state.userManagement.users);
+  console.log(userData,"kvhbvd");
   useEffect(() => {
+    dispatch(getUser())
     dispatch(getUserLogin(localStorage.getItem('uid')))
   }, [dispatch])
   const [editTitle, setEditTitle] = useState('');
@@ -57,45 +60,58 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
   }, [res]);
 
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${url1}/getBookings_sm?uid=${uid}`, {
-        headers: {
-          "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
-        },
-      });
-      const data = await response.json();
-      console.log("This is the data", data);
 
-      const parsedEvents = data.bookings_data.map((event, index) => {
-        // Parse the date and time
-        const eventDate = new Date(`${event.date}T${event.time}:00`);
-
-        // Calculate the end date and time (assuming 1 hour duration for the event)
-        const endDate = new Date(eventDate);
-        endDate.setHours(endDate.getHours() + 1); // Adding 1 hour
-
-        return {
-          id: event.bid,
-          title: event.title,
-          consultant: event.consultant,
-          description: event.desc,
-          time: event.time,
-          start: eventDate,
-          end: eventDate,
-          user: event.user,
-          status: event.status,
-          rate: event.price,
-          booking_photos: event.booking_photos,
-          venue: event.venue,
+  // const fetchData = async () => {
+  //   try {
+      // const response = await fetch(`${url1}/getBookings_sm?uid=${uid}`, {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(`http://localhost:5100/admin/appointments`, {
+              headers: {
+                // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+              },
+            });
+            const data = await response.json();
+            console.log("This is the data", data);
+        
+            const parsedEvents = data?.map((event, index) => {
+              console.log(event, "lllolkoo");
+        
+              // Ensure the date and time are correctly formatted
+              let eventDate = new Date(`${event.date}T${event.time}`);
+              if (isNaN(eventDate)) {
+                eventDate = new Date(event.date); // fallback if event.time is undefined or invalid
+              }
+              console.log(eventDate, "sdkhvdsb");
+        
+              // Calculate the end date and time (assuming 1 hour duration for the event)
+              let endDate = new Date(eventDate);
+              if (!isNaN(eventDate)) {
+                endDate.setHours(endDate.getHours() + 1); // Adding 1 hour
+              }
+        
+              return {
+                id: event?._id,
+                title: event?.firstName || "No Title",
+                consultant: event?.phone || "No Consultant",
+                description: event?.instructions || "No Description",
+                time: event?.time || "No Time",
+                start: isNaN(eventDate) ? "Invalid Date" : eventDate,
+                end: isNaN(endDate) ? "Invalid Date" : endDate,
+                user: event?.email || "No User",
+                status: event?.status || "No Status",
+                rate: event?.phone || "No Price",
+                booking_photos: event?.booking_photos || "No Photos",
+                venue: event?.zipCode || "No Venue",
+              };
+            });
+            console.log(parsedEvents, "sdkjvdsn");
+        
+            setEvents(parsedEvents);
+          } catch (error) {
+            console.log(error);
+          }
         };
-      });
-
-      setEvents(parsedEvents);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const eventComponent = ({ event }) => {
     let consultant = allUserDropdown.map((user) => {
@@ -108,21 +124,22 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
 
     return (
       <div>
-        <div>Title: {event.title}</div>
+        <div>Title: {event?.title}</div>
         <div>Consultant: {consultant}</div>
-        <div>Date: {moment(event.start).format("YYYY-MM-DD")}</div>
-        <div>Time: {event.time}</div>
-        <div>Description: {event.description}</div>
-        <div>Person: {event.user}</div>
-        <div>Status: {event.status}</div>
-        <div>Price: {event.rate}</div>
-        <div>Venue:  {event.venue}</div>
+        <div>Date: {moment(event?.start).format("YYYY-MM-DD")}</div>
+        <div>Time: {event?.time}</div>
+        <div>Description: {event?.description}</div>
+        <div>Person: {event?.user}</div>
+        <div>Status: {event?.status}</div>
+        <div>Phone No: {event?.rate}</div>
+        <div>Venue:  {event?.venue}</div>
       </div>
     );
   };
 
   const handleSelect = (event) => {
     setSelectedEvent(event);
+    console.log(event,"sdkvhjd");
   };
 
   const handleClosePopup = () => {
@@ -130,6 +147,7 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
   };
 
   const handleEditPopup = () => {
+    console.log(selectedEvent,"sadkjvdn");
     setEditPopupOpen(true);
     setdeditTitle(selectedEvent.title)
     setdeditDesc(selectedEvent.description)
@@ -283,9 +301,9 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
                 </div>
                 <div className="flex gap-5">
                   <div style={{ maxHeight: '22rem' }} className="max-w-sm flex flex-col gap-3 overflow-auto">
-                    {selectedEvent.booking_photos ? selectedEvent.booking_photos.map((item, index) => (<>
+                    {/* {selectedEvent ? selectedEvent?.map((item, index) => (<>
                       <img src={item} className="w-full rounded-md h-auto" alt="" />
-                    </>)) : (<h3 className="text-stone-500 text-center flex h-full items-center">No Images to show</h3>)}
+                    </>)) : (<h3 className="text-stone-500 text-center flex h-full items-center">No Images to show</h3>)} */}
                   </div>
                   <div className="flex flex-col gap-5 max-w-md">
                     <div className="flex gap-3 flex-row justify-between">
@@ -439,12 +457,12 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
                         name="assign_consultant"
                         id="" onChange={(event) => setEditAssign(event.target.value)}>
                         <option value=''>Not Assigned</option>
-                        {allUserDropdown.map((user) => {
+                        {userData.map((user) => {
                           // console.log(selectedEvent.consultant);
-                          // console.log('this is user ' + user.uid);
+                          console.log('this is user ' ,user);
                           return (
                             <>
-                              {user.role == 'cr' && (user.uid == selectedEvent.consultant ? (<>
+                              {user.role == 'MT' && (user.uid == selectedEvent.consultant ? (<>
                                 <option selected value={user.uid}>
                                   {user.uname}
                                 </option>

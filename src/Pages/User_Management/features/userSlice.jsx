@@ -32,7 +32,8 @@ export const createUser = createAsyncThunk(
     try {
       const response = await axios({
         method: "post",
-        url: `https://tssapis.devcorps.in/admin/user_management/create`,
+        // url: `https://tssapis.devcorps.in/admin/user_management/create`,
+        url: `${tssurl}/user_management/create`,
         data: formData,
         headers: {
           "authorization": `${localStorage.getItem('jwt')}`,
@@ -615,7 +616,7 @@ export const getUser = createAsyncThunk(
     try {
       const response = await axios({
         method: "get",
-        url: `https://tssapis.devcorps.in/admin/user_management/list`,
+        url: `${tssurl}/user_management/list`,
         headers: {
           "authorization": `${localStorage.getItem('jwt')}`,
           // "Access-Control-Allow-Origin": "*",
@@ -1301,7 +1302,7 @@ export const updateUser = createAsyncThunk(
     try {
       const response = await axios({
         method: "put",
-        url: `https://tssapis.devcorps.in/admin/user_management/${userId}`,
+        url: `${tssurl}/user_management/${userId}`,
         // url: `http://localhost:5100/user_management/${userId}`,
         data: formData,
         headers: {

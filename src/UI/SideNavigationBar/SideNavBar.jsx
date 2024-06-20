@@ -110,7 +110,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
               </NavLink>
             </div>
             {/* User Management */}
-            {/* <div className="mt-4 text-gray-500 text-xs">
+            <div className="mt-4 text-gray-500 text-xs">
               <NavLink to='/home/allUsers'
                 style={{
                   color: expand === "userManagement" ? "#c93a0e" : "#545e6f",
@@ -210,7 +210,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   </div>
                 </>
               )}
-            </div> */}
+            </div>
             {/* Customer Relationship */}
             {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
