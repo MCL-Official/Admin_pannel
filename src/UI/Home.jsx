@@ -47,7 +47,7 @@ import SuspendedMarketUser from "../Pages/MarketPlaceManagement/SuspendUsers/sus
 import AllMarketProducts from "../Pages/MarketPlaceManagement/AllProducts/Allproducts";
 import ListingManagement from "../Pages/MarketPlaceManagement/ListingManagement/listingManagement";
 import ReviewMPM from "../Pages/MarketPlaceManagement/ReviewManagement/reviewManagement";
-// import ProjectBooking from "../Pages/PSM/ProjectBookings/projectBookings";
+import ProjectBooking from "../Pages/PSM/ProjectBookings/projectBookings";
 import CreateUser from "../Pages/User_Management/Create_User/createUser";
 import EditPage from "../Pages/Content_Management/EditPage/editPage";
 import cookie from "js-cookie";
@@ -67,7 +67,7 @@ import EditProductCategory from "../Pages/HSM/ProductCategory/editProductCategor
 import EditServiceCategory from "../Pages/HSM/ServiceCategory/editServiceCategory";
 import AddNewProductCategory from "../Pages/HSM/ProductCategory/addNewProductCategory";
 import AddNewServiceCategory from "../Pages/HSM/ServiceCategory/addNewServiceCategory";
-// import Psm_Bookings from "../Pages/PSM/ProjectBookings/Bookings_psm";
+import Psm_Bookings from "../Pages/PSM/ProjectBookings/Bookings_psm";
 // import PSM_CategoryList from "../Pages/PSM/CRUD/Category";
 // import EditCategoryList_PSM from "../Pages/PSM/CRUD/editCategoryList";
 // import AddNewCategoryList_PSM from "../Pages/PSM/CRUD/addNewCategoryList";
@@ -295,6 +295,26 @@ function Home() {
               path="/reviewForManagement"
               element={
                 <ReviewMPM
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+             <Route
+              exact
+              path="/bookings"
+              element={
+                <ProjectBooking
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/bookings_psm"
+              element={
+                <Psm_Bookings
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import cookie from "js-cookie";
-import { tssurl, url1, url2, url3, url4 } from "../../../UI/port";
+import { tssurl, url, url1, url2, url3, url4 } from "../../../UI/port";
 
 //create action
 
@@ -327,12 +327,13 @@ export const addNewBlog_cms = createAsyncThunk(
     try {
       const response = await axios({
         method: "post",
-        url: `${url1}/addNewBlog_cms`,
+        url: `${url}/admin/blog/`,
+        // url: `http://localhost:5100/admin/blog/`,
         data: formData,
         headers: {
           "authorization": `${localStorage.getItem('jwt')}`,
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-          "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+          // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
           // "X-CSRFToken": csrfToken,
         },
       });
@@ -707,7 +708,8 @@ export const getBlog_cms = createAsyncThunk(
     try {
       const response = await axios({
         method: "get",
-        url: `${url1}/getBlog_cms?blog_id=${blog_id}`,
+        url: `${url}/admin/blog/${blog_id}`,
+        // url: `http://localhost:5100/admin/blog/${blog_id}`,
         headers: {
           "authorization": `${localStorage.getItem('jwt')}`,
           // "Access-Control-Allow-Origin": "*",
@@ -858,7 +860,8 @@ export const getAllBlogs_cms = createAsyncThunk(
     try {
       const response = await axios({
         method: "get",
-        url: `${url1}/getAllBlogs_cms`,
+         url: `${url}/admin/blog/`,
+        // url: `${url1}/getAllBlogs_cms`,
         headers: {
           "authorization": `${localStorage.getItem('jwt')}`,
           // "Access-Control-Allow-Origin": "*",
@@ -1914,37 +1917,35 @@ export const editPagesAboutUs_cms = createAsyncThunk(
     }
   }
 );
-
 export const updateBlog_cms = createAsyncThunk(
   "updateBlog_cms",
-  async (formData, { rejectWithValue }) => {
+  async ({formData, blog_id}, { rejectWithValue }) => {
     try {
+      console.log(formData, "Form Data to Update");
       const response = await axios({
         method: "put",
-        url: `${url1}/updateBlog_cms`, // Change the End points
+        url: `${url}/admin/blog/${blog_id}`, // Use the blog_id in the URL
+        // url: `http://localhost:5100/admin/blog/${blog_id}`, // Use the blog_id in the URL
         data: formData,
         headers: {
           "authorization": `${localStorage.getItem('jwt')}`,
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
           "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
-          // "X-CSRFToken": csrfToken,
-
         },
       });
-      // console.log(response);
+      console.log(response, "Response from Update API");
       // alert("Data updated successfully");
     } catch (error) {
       if (error.response.status === 403) {
         // Handle 403 Forbidden error with a toast message
         toast.error("Access forbidden. You do not have permission to perform this action.");
       } else {
-        // console.log("Not submitting data");
+        console.error("Error updating data", error);
       }
-      // console.log("Not submitting data", error);
       return rejectWithValue(error.response.data);
     }
   }
-);
+);  
 
 
 export const updateHome_cms_meta = createAsyncThunk(
@@ -3189,10 +3190,11 @@ export const DeleteUser = createAsyncThunk("DeleteUser", async (uid) => {
 export const deleteBlog_cms = createAsyncThunk("deleteBlog_cms", async (blog_id) => {
   try {
     const response = await axios.delete(
-      `${url1}/deleteBlog_cms?blog_id=${blog_id}`, {
+      `${url}/admin/blog/${blog_id}`, {
+      // `httlp://localhost:5100/admin/blog/${blog_id}`, {
       headers: {
         "authorization": `${localStorage.getItem('jwt')}`,
-        "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+        // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
       },
     }
     );

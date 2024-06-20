@@ -190,13 +190,13 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
 
 
 
-
+    console.log(preData.blog_id,"ksdhbdfhbvfhfd");
     setLoading(true);
-    await dispatch(updateBlog_cms(formData));
+    await dispatch(updateBlog_cms({formData, blog_id: preData.blog_id}));
     setLoading(false);
-    navigate("/home/blogs")
-    window.location.reload();
-  };
+    // navigate("/home/blogs")
+    // window.location.reload();
+    };
 
   return (
     <div>
@@ -275,7 +275,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
                 // readOnly={`${LuserData.role == 'admin' || LuserData.role == 'editor' ? ('false') : ('true')}`}
                 />
               </label>
-            </div>
+            </div> 
 
             <label className="grid pr-6 mt-4">
               Banner Image

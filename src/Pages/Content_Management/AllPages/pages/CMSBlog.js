@@ -153,7 +153,7 @@ const CMSBlog = ({ setActiveTab, setExpand }) => {
   const data = blogData.map((blog) => ({
     banner_image: <ProfilePhoto picUrl={blog.banner_image} />,
     blog: blog.name,
-    action: <Action blog_id={blog.blog_id} />
+    action: <Action blog_id={blog._id} />
 
   }));
   const greenButtonText = "Add New Blog"

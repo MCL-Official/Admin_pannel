@@ -85,7 +85,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
         <img src={defaultLogoSrc} alt="Default Logo"   className=" max-w-[70%] mx-auto my-auto h-auto max-h-[150px] flex ml-8 mt-2" />
       )}
                           
-                            </Link>
+        </Link>
             </div>
 
             <div className="mt-10 font-semibold" style={{ marginLeft: "4px" }}>
@@ -110,7 +110,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
               </NavLink>
             </div>
             {/* User Management */}
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink to='/home/allUsers'
                 style={{
                   color: expand === "userManagement" ? "#c93a0e" : "#545e6f",
@@ -205,15 +205,14 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                         setActiveTab("permission");
                         setExpand("userManagement");
                       }}>
-                      {/* <TurnedInNotOutlinedIcon style={{ transform: "scale(0.65)" }} /> */}
                       Permission and Role
                     </NavLink>
                   </div>
                 </>
               )}
-            </div>
+            </div> */}
             {/* Customer Relationship */}
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color:
@@ -231,9 +230,9 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 <PeopleAltOutlinedIcon style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Customer Relationship</span>
               </NavLink>
-            </div>
+            </div> */}
 
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color:
@@ -251,9 +250,9 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 <LocalShippingOutlined style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Order Management</span>
               </NavLink>
-            </div>
+            </div> */}
 
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color:
@@ -271,11 +270,11 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 <SupportAgentOutlined style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Support</span>
               </NavLink>
-            </div>
+            </div> */}
 
 
             {/* Content Management */}
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink to='/home/header'
                 style={{
                   color: expand === "contentManagement" ? "#c93a0e" : "#545e6f",
@@ -405,25 +404,9 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       General Configurations
                     </NavLink>
                   </div>
-                  {/* <div className="ml-7 mt-2">
-                    <NavLink
-                      style={{
-                        color:
-                          activeTab === "blogs" ? "black" : "#545e6f",
-                        fontWeight:
-                          activeTab === "blogs" ? "bold" : "inherit",
-                      }}
-                      to="/home/blogs"
-                      onClick={() => {
-                        setActiveTab("blogs");
-                        setExpand("contentManagement");
-                      }}>
-                      Blogs
-                    </NavLink>
-                  </div> */}
                 </>
               )}
-            </div>
+            </div> */}
 
             {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
@@ -447,7 +430,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
               </NavLink>
             </div> */}
 
-            {/* <div className="mt-4 text-gray-500 text-xs">
+             <div className="mt-4 text-gray-500 text-xs">
               <NavLink to="/home/projectList"
                 style={{
                   color: expand === "showcaseManagement" ? "#c93a0e" : "#545e6f",
@@ -467,7 +450,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 activeclassname="active"
                 className="flex items-center">
                 <WidgetsOutlinedIcon style={{ transform: "scale(0.65)" }} />
-                <span className="pl-1">Showcase Management</span>
+                <span className="pl-1">Booking Management</span>
                 <div
                   style={{
                     transform: "scale(0.65)",
@@ -484,7 +467,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
 
               {expand === "showcaseManagement" && (
                 <>
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -515,7 +498,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Category
                     </NavLink>
-                  </div>
+                  </div> */}
                   <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -534,9 +517,9 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   </div>
                 </>
               )}
-            </div> */}
+            </div> 
  <div className="mt-4 text-gray-500 text-xs">
-              <NavLink to="/home/visitors"
+              {/* <NavLink to="/home/visitors"
                 style={{
                   color: expand === "reports" ? "#c93a0e" : "#545e6f",
 
@@ -566,10 +549,10 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                     <AddOutlinedIcon />
                   )}
                 </div>
-              </NavLink>
-              {expand == "reports" && (
+              </NavLink> */}
+              {/* {expand == "reports" && ( */}
                 <>
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -584,7 +567,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Visitors
                     </NavLink>
-                  </div>
+                  </div> */}
                   {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -601,7 +584,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       Featured Product and Services
                     </NavLink>
                   </div> */}
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -620,9 +603,9 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                         Sales
                     </NavLink>
-                  </div>
+                  </div> */}
 
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -637,8 +620,8 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Products Performance
                     </NavLink>
-                  </div>
-                  <div className="ml-7 mt-2">
+                  </div> */}
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -657,9 +640,9 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Activity logs
                     </NavLink>
-                  </div>
+                  </div> */}
                 </>
-              )}
+              {/* )} */}
             </div>
             <div className="mt-4 text-gray-500 text-xs">
               <NavLink to="/home/productList"
@@ -727,7 +710,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       Featured Product and Services
                     </NavLink>
                   </div> */}
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -746,10 +729,10 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Offers and Deals
                     </NavLink>
-                  </div>
+                  </div> */}
                  
 
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -764,8 +747,8 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Category List
                     </NavLink>
-                  </div>
-                  <div className="ml-7 mt-2">
+                  </div> */}
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -784,7 +767,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Product Category List
                     </NavLink>
-                  </div>
+                  </div> */}
                   {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -821,7 +804,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       Service Package List
                     </NavLink>
                   </div> */}
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -838,7 +821,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Review Management
                     </NavLink>
-                  </div>
+                  </div> */}
 
                   {/* <div className="ml-7 mt-2">
                     <NavLink
@@ -859,8 +842,25 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
               )}
             </div>
 
+ <div className="mt-4 text-gray-500 text-xs">
+              <NavLink
+                style={{
+                  color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
+                  fontWeight: activeTab === "settings" ? "bold" : "inherit",
+                }}
+                activeclassname="active"
+                to="/home/Blogs"
+                className="flex items-center"
+                onClick={() => {
+                  setActiveTab("Blogs");
+                  setExpand("Blogs");
+                }}>
+                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <span className="pl-1">Blogs</span>
+              </NavLink>
+            </div>
             {/* Settings */}
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
@@ -876,7 +876,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Settings</span>
               </NavLink>
-            </div>
+            </div> */}
 
 
             <div className="mt-10 flex justify-center">
