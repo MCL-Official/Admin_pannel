@@ -184,7 +184,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
     formData.append("category", category);
     formData.append("tags", tags)
     formData.append("status", status)
-    formData.append("banner_image", metaphoto)
+    if(metaphoto)  formData.append("banner_image", metaphoto)
     formData.append("blog_id", preData.blog_id)
 
 
