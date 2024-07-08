@@ -433,7 +433,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
               onSubmit={handleSubmit}>
               SAVE
             </button>
-            <NavLink to="/home/blogs">
+            <NavLink to="/home/Blogs">
               <button
                 className="rounded bg-black hover:bg-gray-800"
                 style={{

@@ -156,7 +156,7 @@ const AddBlog = ({ setActiveTab, setExpand }) => {
     setLoading(true);
     await dispatch(addNewBlog_cms(formData));
     setLoading(false);
-    navigate("/home/blogs")
+    navigate("/home/Blogs")
     window.location.reload();
   };
 
@@ -392,7 +392,7 @@ const AddBlog = ({ setActiveTab, setExpand }) => {
               onSubmit={handleSubmit}>
               SAVE
             </button>
-            <NavLink to="/home/blogs">
+            <NavLink to="/home/Blogs">
               <button
                 className="rounded bg-black hover:bg-gray-800"
                 style={{
