@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { getUser, getUserLogin } from "../../User_Management/features/userSlice";
 import { useSelector } from "react-redux";
-import { url1 } from "../../../UI/port";
+import { tssurl, url1 } from "../../../UI/port";
 
 const localizer = momentLocalizer(moment);
 
@@ -66,7 +66,7 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
       // const response = await fetch(`${url1}/getBookings_sm?uid=${uid}`, {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:5100/admin/appointments`, {
+            const response = await fetch(`${tssurl}/appointments`, {
               headers: {
                 // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
               },
