@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react"
 import TopHeader from "../../../../UI/TopHeader/TopHeader";
 import { Form, Link, useLocation, useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { editContactPage_cms, getBlog_cms, updateBlog_cms, updateUser } from "../../../User_Management/features/userSlice";
+import { addNewBlog_cms, editContactPage_cms, updateUser } from "../../../User_Management/features/userSlice";
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
@@ -17,30 +17,27 @@ import { useSelector } from "react-redux";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const CMSEditBlog = ({ setActiveTab, setExpand }) => {
+const AddBlogInternational = ({ setActiveTab, setExpand }) => {
 
   setActiveTab("blogs");
   setExpand("contentManagement")
-  const head = "Edit Blog";
-
-  //   const dispatch = useDispatch();
+  const head = "Add Blog  for International;";
 
   const dispatch = useDispatch();
+
+
   const navigate = useNavigate();
   //   const navigate = useNavigate();
-  const location = useLocation();
-  const preData = location.state;
-  // console.log(preData.blog_id);
+
 
   const [loading, setLoading] = useState(false);
 
 
   //   //Contact widget
 
-
   // //Social Media
-
-  //   // console.log( preData);
+  // console.log("Data is")
+  //   console.log( preData);
   //   const [mailID, setMailID] = useState(preData.email);
   //   const [contactNo, setContactNo] = useState(preData.contact_number);
   //   //   //About US
@@ -63,42 +60,11 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
   const [metadesc, setMetaDesc] = useState('')
   const [metakeywords, setMetaKeywords] = useState('')
   const [metaphoto, setMetaPhoto] = useState();
-  useEffect(() => {
-    // console.log(blogShort);
 
-  }, [blogShort])
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      setLoading(true);
-      await dispatch(getBlog_cms(preData.blog_id));
-
-      setLoading(false);
-    };
-    fetchUserData();
-  }, [dispatch]);
   //   const handleEmailChange = (event) => {
   //     setMailID(event.target.value);
   //   };
-  const blogData = useSelector((state) => state.userManagement.getBlog_cms);
-  // console.log(blogData);
 
-
-  useEffect(() => {
-    setaddedBy(blogData.added_by);
-    setbannerContent(blogData.banner_content)
-    setblogContent(blogData.blog_content)
-    setblogShort(blogData.blog_short_content1)
-    setblogShort2(blogData.blog_short_content2)
-    setcategory(blogData.category)
-    setMetaDesc(blogData.meta_description)
-    setMetaKeywords(blogData.meta_tags)
-    setMetaTitle(blogData.meta_title)
-    setName(blogData.name)
-    setreadTime(blogData.read_time)
-    setstatus(blogData.status)
-    settags(blogData.tags)
-  }, [blogData])
   //   const handleContactNoChange = (event) => {
   //     setContactNo(event.target.value);
   //   };
@@ -184,19 +150,15 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
     formData.append("category", category);
     formData.append("tags", tags)
     formData.append("status", status)
-    if(metaphoto)  formData.append("banner_image", metaphoto)
-    formData.append("blog_id", preData.blog_id)
+   if(metaphoto) formData.append("banner_image", metaphoto)
 
 
-
-
-    console.log(preData.blog_id,"ksdhbdfhbvfhfd");
     setLoading(true);
-    await dispatch(updateBlog_cms({formData, blog_id: preData.blog_id}));
+    await dispatch(addNewBlog_cms(formData));
     setLoading(false);
-    navigate("/home/blogs")
+    navigate("/home/BlogsforInternational")
     window.location.reload();
-    };
+  };
 
   return (
     <div>
@@ -275,7 +237,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
                 // readOnly={`${LuserData.role == 'admin' || LuserData.role == 'editor' ? ('false') : ('true')}`}
                 />
               </label>
-            </div> 
+            </div>
 
             <label className="grid pr-6 mt-4">
               Banner Image
@@ -284,7 +246,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
                 <div className="flex items-center mb-2">
                   <div className="w-20 h-20 rounded overflow-hidden">
                     <img
-                      src={blogData.banner_image}
+                      src={null}
                       alt="Meta Photo"
                       className="w-full h-full object-cover"
                     />
@@ -406,7 +368,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
             </div>
             <label className="grid pr-6 mt-4 ">
               Status
-              <select
+              <input
                 type="add"
                 value={status}
                 className="px-4 py-2 drop-shadow-md rounded-md mt-1 "
@@ -414,10 +376,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
                 onChange={handlestatus}
                 required
               // readOnly={`${LuserData.role == 'admin' || LuserData.role == 'editor' ? (false) : (true)}`}
-              >
-                <option >Active</option>
-                <option >Inactive</option>
-              </select>
+              />
             </label>
           </div>
 
@@ -447,8 +406,111 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
           </div>
         </form>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
+
+
+
+
+
+
+
+
+
+
+    // // {/*            
+    // //             <label className="grid pr-6">
+    // //               Background Image
+    // //               {bgImg ? (null) : (
+
+    // //                 <div className="flex items-center mb-2">
+    // //                   <div className="w-20 h-20 rounded overflow-hidden">
+    // //                     <img
+    // //                       src={editData.photo}
+    // //                       alt="User profile"
+    // //                       className="w-full h-full object-cover"
+    // //                     />
+    // //                   </div>
+    // //                 </div>
+    // //               )
+    // //               }
+    // //               {photo ? (
+    // //                 <div className="flex items-center">
+    // //                   <div className="w-20 h-20 rounded overflow-hidden">
+    // //                     <img
+    // //                       src={URL.createObjectURL(photo)}
+    // //                       alt="User profile"
+    // //                       className="w-full h-full object-cover"
+    // //                     />
+    // //                   </div>
+    // //                   <div>
+    // //                     <button
+    // //                       style={{
+    // //                         color: "red",
+    // //                         paddingLeft: "5px",
+    // //                         cursor: "pointer",
+    // //                         backgroundColor: "white",
+    // //                         marginLeft: "20px",
+    // //                       }}
+    // //                       onClick={handlePhotoRemove}>
+    // //                       Remove
+    // //                     </button>
+    // //                   </div>
+    // //                 </div>
+    // //               ) : (
+    // //                 <input
+    // //                   type="file"
+    // //                   id="photo"
+    // //                   name="photo"
+    // //                   accept="image/*"
+    // //                   onChange={handlePhotoChange}
+    // //                   // required
+    // //                   class="file:bg-black file:px-6 file:py-3 file:border-none file:rounded file:text-white file:cursor-pointer placeholder-transparent mt-3 rounded appearance-none placeholder-transparent w-[50vh]"
+    // //                   style={{ border: "2px solid #e6f7fe" }}
+    // //                 />
+    // //               )}
+    // //             </label>
+    // //           </div>
+    // //           <div className="flex mt-10 gap-5 items-center">
+    // //             <button
+    // //               className="rounded bg-[#c93a0e] hover:bg-[#c91b0e]"
+    // //               style={{
+    // //                 width: "130px",
+    // //                 height: "55px",
+    // //                 color: "white",
+    // //               }}
+    // //               type="submit"
+    // //               onSubmit={handleSubmit}>
+    // //               SAVE
+    // //             </button>
+    // //             <NavLink to="/home/header">
+    // //               <button
+    // //                 className="rounded bg-black hover:bg-gray-800"
+    // //                 style={{
+    // //                   width: "130px",
+    // //                   height: "55px",
+    // //                   color: "white",
+    // //                 }}>
+    // //                 Back
+    // //               </button>
+    // //             </NavLink> */}
+    // //           </div>
+    // //         </form>
+    // //       </div>
+    // //     </div>
   );
 };
 
-export default CMSEditBlog;
+export default AddBlogInternational;

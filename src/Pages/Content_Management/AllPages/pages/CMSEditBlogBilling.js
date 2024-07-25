@@ -17,11 +17,11 @@ import { useSelector } from "react-redux";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const CMSEditBlog = ({ setActiveTab, setExpand }) => {
+const CMSEditBlogBilling = ({ setActiveTab, setExpand }) => {
 
   setActiveTab("blogs");
   setExpand("contentManagement")
-  const head = "Edit Blog";
+  const head = "Edit Blog For Billing";
 
   //   const dispatch = useDispatch();
 
@@ -194,7 +194,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
     setLoading(true);
     await dispatch(updateBlog_cms({formData, blog_id: preData.blog_id}));
     setLoading(false);
-    navigate("/home/blogs")
+    navigate("/home/BlogsforBilling")
     window.location.reload();
     };
 
@@ -451,4 +451,4 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
   );
 };
 
-export default CMSEditBlog;
+export default CMSEditBlogBilling;

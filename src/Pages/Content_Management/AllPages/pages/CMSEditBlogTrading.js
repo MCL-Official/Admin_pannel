@@ -3,7 +3,7 @@ import TopHeader from "../../../../UI/TopHeader/TopHeader";
 import { Form, Link, useLocation, useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { editContactPage_cms, getBlog_cms, updateBlog_cms, updateUser } from "../../../User_Management/features/userSlice";
+import { editContactPage_cms, getBlog_cms, getBlog_cms_trading, updateBlog_cms, updateBlog_cms_trading, updateUser } from "../../../User_Management/features/userSlice";
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
@@ -17,11 +17,11 @@ import { useSelector } from "react-redux";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const CMSEditBlog = ({ setActiveTab, setExpand }) => {
+const CMSEditBlogTrading = ({ setActiveTab, setExpand }) => {
 
   setActiveTab("blogs");
   setExpand("contentManagement")
-  const head = "Edit Blog";
+  const head = "Edit Blog For Trading";
 
   //   const dispatch = useDispatch();
 
@@ -71,7 +71,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       setLoading(true);
-      await dispatch(getBlog_cms(preData.blog_id));
+      await dispatch(getBlog_cms_trading(preData.blog_id));
 
       setLoading(false);
     };
@@ -80,7 +80,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
   //   const handleEmailChange = (event) => {
   //     setMailID(event.target.value);
   //   };
-  const blogData = useSelector((state) => state.userManagement.getBlog_cms);
+  const blogData = useSelector((state) => state.userManagement.getBlog_cms_trading);
   // console.log(blogData);
 
 
@@ -192,10 +192,10 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
 
     console.log(preData.blog_id,"ksdhbdfhbvfhfd");
     setLoading(true);
-    await dispatch(updateBlog_cms({formData, blog_id: preData.blog_id}));
+    await dispatch(updateBlog_cms_trading({formData, blog_id: preData.blog_id}));
     setLoading(false);
-    navigate("/home/blogs")
-    window.location.reload();
+    // navigate("/home/Blogsfortrading")
+    // window.location.reload();
     };
 
   return (
@@ -451,4 +451,4 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
   );
 };
 
-export default CMSEditBlog;
+export default CMSEditBlogTrading;

@@ -17,11 +17,11 @@ import { useSelector } from "react-redux";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const CMSEditBlog = ({ setActiveTab, setExpand }) => {
+const CMSEditBlogInternational = ({ setActiveTab, setExpand }) => {
 
   setActiveTab("blogs");
   setExpand("contentManagement")
-  const head = "Edit Blog";
+  const head = "Edit Blog For International";
 
   //   const dispatch = useDispatch();
 
@@ -71,7 +71,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       setLoading(true);
-      await dispatch(getBlog_cms(preData.blog_id));
+      await dispatch(getBlog_cms(preData?.blog_id));
 
       setLoading(false);
     };
@@ -194,7 +194,7 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
     setLoading(true);
     await dispatch(updateBlog_cms({formData, blog_id: preData.blog_id}));
     setLoading(false);
-    navigate("/home/blogs")
+    navigate("/home/Blogsfortrading")
     window.location.reload();
     };
 
@@ -451,4 +451,4 @@ const CMSEditBlog = ({ setActiveTab, setExpand }) => {
   );
 };
 
-export default CMSEditBlog;
+export default CMSEditBlogInternational;

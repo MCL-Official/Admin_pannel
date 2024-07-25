@@ -856,7 +856,76 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   setExpand("Blogs");
                 }}>
                 <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
-                <span className="pl-1">Blogs</span>
+                <span className="pl-1">Blogs for MY care labs</span>
+              </NavLink>
+            </div>
+ <div className="mt-4 text-gray-500 text-xs">
+              <NavLink
+                style={{
+                  color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
+                  fontWeight: activeTab === "settings" ? "bold" : "inherit",
+                }}
+                activeclassname="active"
+                to="/home/Blogsfortrading"
+                className="flex items-center"
+                onClick={() => {
+                  setActiveTab("Blogs");
+                  setExpand("Blogs");
+                }}>
+                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <span className="pl-1">Blogs for Trading</span>
+              </NavLink>
+            </div>
+
+ <div className="mt-4 text-gray-500 text-xs">
+              <NavLink
+                style={{
+                  color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
+                  fontWeight: activeTab === "settings" ? "bold" : "inherit",
+                }}
+                activeclassname="active"
+                to="/home/BlogsforSewa"
+                className="flex items-center"
+                onClick={() => {
+                  setActiveTab("Blogs");
+                  setExpand("Blogs");
+                }}>
+                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <span className="pl-1">Blogs for Sewa</span>
+              </NavLink>
+            </div>
+ <div className="mt-4 text-gray-500 text-xs">
+              <NavLink
+                style={{
+                  color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
+                  fontWeight: activeTab === "settings" ? "bold" : "inherit",
+                }}
+                activeclassname="active"
+                to="/home/BlogsforInternational"
+                className="flex items-center"
+                onClick={() => {
+                  setActiveTab("Blogs");
+                  setExpand("Blogs");
+                }}>
+                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <span className="pl-1">Blogs for International</span>
+              </NavLink>
+            </div>
+ <div className="mt-4 text-gray-500 text-xs">
+              <NavLink
+                style={{
+                  color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
+                  fontWeight: activeTab === "settings" ? "bold" : "inherit",
+                }}
+                activeclassname="active"
+                to="/home/BlogsforBilling"
+                className="flex items-center"
+                onClick={() => {
+                  setActiveTab("Blogs");
+                  setExpand("Blogs");
+                }}>
+                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <span className="pl-1">Blogs for Billing</span>
               </NavLink>
             </div>
             {/* Settings */}

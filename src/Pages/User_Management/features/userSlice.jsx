@@ -354,6 +354,38 @@ export const addNewBlog_cms = createAsyncThunk(
     }
   }
 );
+export const addNewBlog_cms_trading = createAsyncThunk(
+  "addNewBlog_cms_trading",
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${url}/admin/blog/trading`,
+        // url: `http://localhost:5100/admin/blog/`,
+        data: formData,
+        headers: {
+          // "authorization": `${localStorage.getItem('jwt')}`,
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+          // "X-CSRFToken": csrfToken,
+        },
+      });
+      // console.log(...formData);
+      alert("Data created successfully");
+      // console.log(response);
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 403) {
+        // Handle 403 Forbidden error with a toast message
+        toast.error("Access forbidden. You do not have permission to perform this action.");
+      } else {
+        // console.log("Not submitting data");
+      }
+      // console.log("Not submitting data");
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 export const addNewPromotion = createAsyncThunk(
   "addNewPromotion",
   async (formData, { rejectWithValue }) => {
@@ -733,6 +765,37 @@ export const getBlog_cms = createAsyncThunk(
     }
   }
 );
+export const getBlog_cms_trading = createAsyncThunk(
+  "getBlog_cms_trading",
+  async (blog_id, { rejectWithValue }) => {
+    // console.log("hello");
+    try {
+      const response = await axios({
+        method: "get",
+        url: `${url}/admin/blog/trading/${blog_id}`,
+        // url: `http://localhost:5100/admin/blog/${blog_id}`,
+        headers: {
+          "authorization": `${localStorage.getItem('jwt')}`,
+          // "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+          "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+        },
+      });
+      // console.log(response.data);
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 403) {
+        // Handle 403 Forbidden error with a toast message
+        toast.error("Access forbidden. You do not have permission to perform this action.");
+      } else {
+        // console.log("Not submitting data");
+      }
+      // console.log("Not submitting data");
+      // console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 export const getProductPerformance = createAsyncThunk(
   "getProductPerformance",
   async (_, { rejectWithValue }) => {
@@ -868,6 +931,37 @@ export const getAllBlogs_cms = createAsyncThunk(
           // "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
           "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+        },
+      });
+      // console.log(response.data);
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 403) {
+        // Handle 403 Forbidden error with a toast message
+        toast.error("Access forbidden. You do not have permission to perform this action.");
+      } else {
+        // console.log("Not submitting data");
+      }
+      // console.log("Not submitting data");
+      // console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+export const getAllBlogs_cms_trading = createAsyncThunk(
+  "getAllBlogs_cms_trading",
+  async (_, { rejectWithValue }) => {
+    // console.log("hello");
+    try {
+      const response = await axios({
+        method: "get",
+         url: `${url}/admin/blog/trading/data11`,
+        // url: `${url1}/getAllBlogs_cms`,
+        headers: {
+          // "authorization": `${localStorage.getItem('jwt')}`,
+          // "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+          // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
         },
       });
       // console.log(response.data);
@@ -1932,6 +2026,35 @@ export const updateBlog_cms = createAsyncThunk(
           "authorization": `${localStorage.getItem('jwt')}`,
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
           "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+        },
+      });
+      console.log(response, "Response from Update API");
+      // alert("Data updated successfully");
+    } catch (error) {
+      if (error.response.status === 403) {
+        // Handle 403 Forbidden error with a toast message
+        toast.error("Access forbidden. You do not have permission to perform this action.");
+      } else {
+        console.error("Error updating data", error);
+      }
+      return rejectWithValue(error.response.data);
+    }
+  }
+);  
+export const updateBlog_cms_trading = createAsyncThunk(
+  "updateBlog_cms_trading",
+  async ({formData, blog_id}, { rejectWithValue }) => {
+    try {
+      console.log(formData, "Form Data to Update");
+      const response = await axios({
+        method: "put",
+        url: `${url}/admin/blog/trading/${blog_id}`, // Use the blog_id in the URL
+        // url: `http://localhost:5100/admin/blog/${blog_id}`, // Use the blog_id in the URL
+        data: formData,
+        headers: {
+          // "authorization": `${localStorage.getItem('jwt')}`,
+          // "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
         },
       });
       console.log(response, "Response from Update API");
@@ -3212,6 +3335,30 @@ export const deleteBlog_cms = createAsyncThunk("deleteBlog_cms", async (blog_id)
   }
 
 });
+export const deleteBlog_cms_trading = createAsyncThunk("deleteBlog_cms_trading", async (blog_id) => {
+  try {
+    const response = await axios.delete(
+      `${url}/admin/blog/trading/${blog_id}`, {
+      // `httlp://localhost:5100/admin/blog/${blog_id}`, {
+      headers: {
+        "authorization": `${localStorage.getItem('jwt')}`,
+        // "API-Key": "90bd6f5b-033f-42e7-8e92-2a443dfa42f8",
+      },
+    }
+    );
+    if (response.data) {
+      // Product deleted successfully
+      toast.success("Blog is deleted successfully");
+      return response.data;
+    }
+  }catch (error) {
+    // Handle error during the API request
+    console.error('Error deleting product:', error);
+    toast.error('Not a valid access');
+    throw error; // Rethrow the error to ensure it is propagated
+  }
+
+});
 
 export const DeleteBanner = createAsyncThunk("DeleteBanner", async (banner_id) => {
   try {
@@ -4123,7 +4270,9 @@ export const userDetails = createSlice({
     getHomePage_cms_meta: [],
     getAbout_cms_meta: [],
     getAllBlogs_cms: [],
+    getAllBlogs_cms_trading: [],
     getBlog_cms: [],
+    getBlog_cms_trading: [],
     getContactUs_cms_meta: [],
     mpm_category: [],
     getPrivacy_cms: [],
@@ -4530,6 +4679,18 @@ export const userDetails = createSlice({
         state.getAllBlogs_cms = action.payload;
       })
       .addCase(getAllBlogs_cms.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload?.message;
+      })
+      //Get all Blogs
+      .addCase(getAllBlogs_cms_trading.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllBlogs_cms_trading.fulfilled, (state, action) => {
+        state.loading = false;
+        state.getAllBlogs_cms_trading = action.payload;
+      })
+      .addCase(getAllBlogs_cms_trading.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message;
       })
@@ -4946,6 +5107,17 @@ export const userDetails = createSlice({
         state.getBlog_cms = action.payload;
       })
       .addCase(getBlog_cms.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload?.message;
+      })
+      .addCase(getBlog_cms_trading.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getBlog_cms_trading.fulfilled, (state, action) => {
+        state.loading = false;
+        state.getBlog_cms_trading = action.payload;
+      })
+      .addCase(getBlog_cms_trading.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message;
       })

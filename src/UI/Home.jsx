@@ -98,6 +98,18 @@ import Visitors from "../Pages/HSM/Reports/visitors.js";
 import Sales from "../Pages/HSM/Reports/sales.js";
 import ProductPerformance from "../Pages/HSM/Reports/productPerformance.js";
 import ActivityLogs from "../Pages/HSM/Reports/activitylogs.js";
+import CMSBlogTrading from "../Pages/Content_Management/AllPages/pages/CMSBlogTrading.js";
+import AddBlogtrading from "../Pages/Content_Management/AllPages/pages/AddBlogtrading.js";
+import CMSEditBlogTrading from "../Pages/Content_Management/AllPages/pages/CMSEditBlogTrading.js";
+import CMSBlogSewa from "../Pages/Content_Management/AllPages/pages/CMSBlogSewa.js";
+import AddBlogSewa from "../Pages/Content_Management/AllPages/pages/AddBlogSewa.js";
+import CMSEditBlogSewa from "../Pages/Content_Management/AllPages/pages/CMSEditBlogSewa.js";
+import CMSBlogInternational from "../Pages/Content_Management/AllPages/pages/CMSBlogInternational.js";
+import CMSEditBlogInternational from "../Pages/Content_Management/AllPages/pages/CMSEditBlogInternational.js";
+import AddBlogInternational from "../Pages/Content_Management/AllPages/pages/AddBlogInternational.js";
+import CMSBlogBiling from "../Pages/Content_Management/AllPages/pages/CMSBlogBilling.js";
+import CMSEditBlogBilling from "../Pages/Content_Management/AllPages/pages/CMSEditBlogBilling.js";
+import AddBlogBilling from "../Pages/Content_Management/AllPages/pages/AddBlogBilling.js";
 // import { useLocation } from 'react-router-dom';
 
 function Home() {
@@ -542,6 +554,126 @@ function Home() {
             />
             <Route
               exact
+              path="/Blogsfortrading"
+              element={
+                <CMSBlogTrading
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editblogtrading"
+              element={
+                <CMSEditBlogTrading
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+             <Route
+              exact
+              path="/addblogfortrading"
+              element={
+                <AddBlogtrading
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/BlogsforBilling"
+              element={
+                <CMSBlogBiling
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editblogBilling"
+              element={
+                <CMSEditBlogBilling
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+             <Route
+              exact
+              path="/addblogforBilling"
+              element={
+                <AddBlogBilling
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/BlogsforSewa"
+              element={
+                <CMSBlogSewa
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editblogSewa"
+              element={
+                <CMSEditBlogSewa
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+             <Route
+              exact
+              path="/addblogforSewa"
+              element={
+                <AddBlogSewa
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/BlogsforInternational"
+              element={
+                <CMSBlogInternational
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/editblogInternational"
+              element={
+                <CMSEditBlogInternational
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+             <Route
+              exact
+              path="/addblogforInternational"
+              element={
+                <AddBlogInternational
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
               path="/blogs"
               element={
                 <CMSBlog
@@ -570,6 +702,7 @@ function Home() {
                 />
               }
             />
+           
             <Route
               exact
               path="/addDepartment"
