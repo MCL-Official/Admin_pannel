@@ -431,7 +431,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
             </div> */}
 
              <div className="mt-4 text-gray-500 text-xs">
-              <NavLink to="/home/projectList"
+              <NavLink to="/home/bookings_psm"
                 style={{
                   color: expand === "showcaseManagement" ? "#c93a0e" : "#545e6f",
                   fontWeight:
