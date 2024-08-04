@@ -6,6 +6,7 @@ import TopHeader from "../../UI/TopHeader/TopHeader";
 import { tssurl } from '../../UI/port';
 import Map from './Component/Map'
 import MapsLeaf from './Component/Map/Maps_leaf';
+import AdminBlogViewsChart from './Component/AdminBlogViewsChart';
 const Dashboard = () => {
   const [timeframe, setTimeframe] = useState('today');
   const head = "Dashboard";
@@ -198,7 +199,8 @@ const Dashboard = () => {
             <Map/>
         </div> */}
         <div>
-            <MapsLeaf/>
+            {/* <MapsLeaf/> */}
+            <AdminBlogViewsChart/>
         </div>
       </div>
     </div>
