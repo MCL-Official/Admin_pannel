@@ -10,7 +10,7 @@ const AdminBlogViewsChart = () => {
   useEffect(() => {
     const fetchTopBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/admin/blog/top-blogs');
+        const response = await axios.get('https://backend.mycaretrading.com/admin/blog/top-blogs');
         setTopBlogs(response.data);
         setLoading(false);
       } catch (err) {
