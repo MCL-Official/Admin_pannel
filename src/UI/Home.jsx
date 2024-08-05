@@ -110,6 +110,7 @@ import AddBlogInternational from "../Pages/Content_Management/AllPages/pages/Add
 import CMSBlogBiling from "../Pages/Content_Management/AllPages/pages/CMSBlogBilling.js";
 import CMSEditBlogBilling from "../Pages/Content_Management/AllPages/pages/CMSEditBlogBilling.js";
 import AddBlogBilling from "../Pages/Content_Management/AllPages/pages/AddBlogBilling.js";
+import CreateBooking from "../Pages/PSM/ProjectBookings/CreateBooking.jsx";
 // import { useLocation } from 'react-router-dom';
 
 function Home() {
@@ -327,6 +328,16 @@ function Home() {
               path="/bookings_psm"
               element={
                 <Psm_Bookings
+                  setExpand={togleExpand}
+                  setActiveTab={handleActiveTab}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/bookings_Create"
+              element={
+                <CreateBooking
                   setExpand={togleExpand}
                   setActiveTab={handleActiveTab}
                 />

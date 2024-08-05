@@ -210,8 +210,8 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   </div>
                 </>
               )}
-            </div>
-            {/* Customer Relationship */}
+            </div> 
+             {/* Customer Relationship */}
             {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
@@ -429,8 +429,8 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 <span className="pl-1">Content Management</span>
               </NavLink>
             </div> */}
-
-             <div className="mt-4 text-gray-500 text-xs">
+            
+            <div className="mt-4 text-gray-500 text-xs">
               <NavLink to="/home/bookings_psm"
                 style={{
                   color: expand === "showcaseManagement" ? "#c93a0e" : "#545e6f",
@@ -499,6 +499,22 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       Category
                     </NavLink>
                   </div> */}
+                  <div className="ml-7 mt-2">
+                    <NavLink
+                      style={{
+                        color:
+                          activeTab === "bookings_Create" ? "black" : "#545e6f",
+                        fontWeight:
+                          activeTab === "bookings_Create" ? "bold" : "inherit",
+                      }}
+                      to="/home/bookings_Create"
+                      onClick={() => {
+                        setActiveTab("bookings_Create");
+                        setExpand("showcaseManagement");
+                      }}>
+                      Create A Bookings
+                    </NavLink>
+                  </div>
                   <div className="ml-7 mt-2">
                     <NavLink
                       style={{
