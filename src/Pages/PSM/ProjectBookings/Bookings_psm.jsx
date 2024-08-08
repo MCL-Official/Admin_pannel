@@ -49,6 +49,7 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
   const [deditTime, setdeditTime] = useState(null);
   const [deditVenue, setdeditVenue] = useState(null);
   const [deditStatus, setdeditStatus] = useState(null);
+  const [deditLocation, setdeditLocation] = useState(null);
 
   useEffect(() => {
     console.log("Bookings useEffects")
@@ -93,6 +94,8 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
               return {
                 id: event?._id,
                 title: event?.firstName || "No Title",
+                Location : event?.Location || "Fremont, CA 94538",
+                TypeTest : event?.Employee || "NorCal: Fremont Lab",
                 consultant: event?.phone || "No Consultant",
                 description: event?.instructions || "No Description",
                 time: event?.time || "No Time",
@@ -125,14 +128,14 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
     return (
       <div>
         <div>Title: {event?.title}</div>
-        <div>Consultant: {consultant}</div>
+        <div>Location: {event?.Location}</div>
         <div>Date: {moment(event?.start).format("YYYY-MM-DD")}</div>
         <div>Time: {event?.time}</div>
         <div>Description: {event?.description}</div>
-        <div>Person: {event?.user}</div>
+        <div>Email: {event?.user}</div>
         <div>Status: {event?.status}</div>
         <div>Phone No: {event?.rate}</div>
-        <div>Venue:  {event?.venue}</div>
+        <div>Zip Code:  {event?.venue}</div>
       </div>
     );
   };
@@ -155,6 +158,7 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
     setdeditTime(selectedEvent.time)
     setdeditVenue(selectedEvent.venue)
     setdeditStatus(selectedEvent.status)
+    setdeditLocation(selectedEvent.status)
 
   };
 
@@ -311,6 +315,14 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
                       <p>{selectedEvent.title}</p>
                     </div>
                     <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl"> Location :</label>
+                      <p> {selectedEvent.Location}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row justify-between">
+                      <label className="text-blue-600 text-xl"> Booking From :</label>
+                      <p> {selectedEvent.TypeTest}</p>
+                    </div>
+                    <div className="flex gap-3 flex-row justify-between">
                       <label className="text-blue-600 text-xl">
                         Description :
                       </label>
@@ -324,8 +336,9 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
                       <label className="text-blue-600 text-xl"> Time :</label>
                       <p> {selectedEvent.time}</p>
                     </div>
+                   
                     <div className="flex gap-3 flex-row justify-between">
-                      <label className="text-blue-600 text-xl">Person : </label>
+                      <label className="text-blue-600 text-xl">Email : </label>
                       <p>{selectedEvent.user}</p>
                     </div>
                     <div className="flex gap-3 flex-row justify-between">
@@ -333,11 +346,11 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
                       <p>{selectedEvent.status}</p>
                     </div>
                     <div className="flex gap-3 flex-row text-left justify-between">
-                      <label className="text-blue-600 text-xl">Price: </label>
+                      <label className="text-blue-600 text-xl">Phone No: </label>
                       <p>{selectedEvent.rate}</p>
                     </div>
                     <div className="flex gap-3 flex-row text-left justify-between">
-                      <label className="text-blue-600 text-xl">Venue: </label>
+                      <label className="text-blue-600 text-xl">Zip Code: </label>
                       <p className="text-end">{selectedEvent.venue}</p>
                     </div>
                   </div>
