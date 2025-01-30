@@ -48,7 +48,7 @@ const CreateBooking = () => {
 
     // Send booking details to the backend
     try {
-      await axios.post('https://backend.mycaretrading.com/admin/appointments', formData);
+      await axios.post('https://bookingbackend.mycaretrading.com/admin/appointments', formData);
       setNotification('Appointment booked successfully!');
       // Reset form data
       setFormData({
