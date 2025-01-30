@@ -56,11 +56,11 @@ function Login() {
     catch (err) {
       // console.log(err);
       setResult(true);
-      setResultr(err.response.data.msg);
+      setResultr(err.response);
     };
   };
   useEffect(() => {
-    if (result == true) {
+    if (result === true) {
       let login = document.getElementById('login');
       setTimeout(() => {
         login.style.transition = '0.5s';
