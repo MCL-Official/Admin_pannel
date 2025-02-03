@@ -333,7 +333,7 @@ function Home() {
                 />
               }
             />
-            <Route
+            {/* <Route
               exact
               path="/bookings_Create"
               element={
@@ -342,7 +342,7 @@ function Home() {
                   setActiveTab={handleActiveTab}
                 />
               }
-            />
+            /> */}
             <Route
               exact
               path="/categoryManagement"

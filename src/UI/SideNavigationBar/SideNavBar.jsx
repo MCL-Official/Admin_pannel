@@ -11,6 +11,7 @@ import TurnedInNotOutlinedIcon from "@mui/icons-material/TurnedInNotOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveIcon from "@mui/icons-material/Remove";
+import EditNoteIcon from '@mui/icons-material/EditNote';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import axios from "axios";
 import cookie from "js-cookie";
@@ -110,7 +111,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
               </NavLink>
             </div>
             {/* User Management */}
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink to='/home/allUsers'
                 style={{
                   color: expand === "userManagement" ? "#c93a0e" : "#545e6f",
@@ -210,7 +211,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   </div>
                 </>
               )}
-            </div> 
+            </div>  */}
              {/* Customer Relationship */}
             {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink
@@ -429,7 +430,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 <span className="pl-1">Content Management</span>
               </NavLink>
             </div> */}
-            
+            {/* Booking Management */}
             <div className="mt-4 text-gray-500 text-xs">
               <NavLink to="/home/bookings_psm"
                 style={{
@@ -499,7 +500,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       Category
                     </NavLink>
                   </div> */}
-                  <div className="ml-7 mt-2">
+                  {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
                         color:
@@ -512,9 +513,9 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                         setActiveTab("bookings_Create");
                         setExpand("showcaseManagement");
                       }}>
-                      Create A Bookings
+                      Create A Booking
                     </NavLink>
-                  </div>
+                  </div> */}
                   <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -660,7 +661,8 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                 </>
               {/* )} */}
             </div>
-            <div className="mt-4 text-gray-500 text-xs">
+            {/* Inventory management */}
+            {/* <div className="mt-4 text-gray-500 text-xs">
               <NavLink to="/home/productList"
                 style={{
                   color: expand === "homeService" ? "#c93a0e" : "#545e6f",
@@ -692,7 +694,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   )}
                 </div>
               </NavLink>
-              {expand == "homeService" && (
+              expand == "homeService" && (
                 <>
                   <div className="ml-7 mt-2">
                     <NavLink
@@ -725,7 +727,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Featured Product and Services
                     </NavLink>
-                  </div> */}
+                  </div> 
                   {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -745,7 +747,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Offers and Deals
                     </NavLink>
-                  </div> */}
+                  </div> 
                  
 
                   {/* <div className="ml-7 mt-2">
@@ -763,7 +765,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Category List
                     </NavLink>
-                  </div> */}
+                  </div> 
                   {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -783,7 +785,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Product Category List
                     </NavLink>
-                  </div> */}
+                  </div> 
                   {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -803,7 +805,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Service Category List
                     </NavLink>
-                  </div> */}
+                  </div> 
                   {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -819,7 +821,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Service Package List
                     </NavLink>
-                  </div> */}
+                  </div> 
                   {/* <div className="ml-7 mt-2">
                     <NavLink
                       style={{
@@ -837,7 +839,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Review Management
                     </NavLink>
-                  </div> */}
+                  </div> 
 
                   {/* <div className="ml-7 mt-2">
                     <NavLink
@@ -853,12 +855,13 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                       }}>
                       Bookings
                     </NavLink>
-                  </div> */}
+                  </div> 
                 </>
               )}
-            </div>
+            </div> */}
 
- <div className="mt-4 text-gray-500 text-xs">
+              {/* Blogs */}
+            <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
@@ -871,29 +874,11 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   setActiveTab("Blogs");
                   setExpand("Blogs");
                 }}>
-                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <EditNoteIcon style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Blogs for MY care labs</span>
               </NavLink>
             </div>
- <div className="mt-4 text-gray-500 text-xs">
-              <NavLink
-                style={{
-                  color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
-                  fontWeight: activeTab === "settings" ? "bold" : "inherit",
-                }}
-                activeclassname="active"
-                to="/home/Blogsfortrading"
-                className="flex items-center"
-                onClick={() => {
-                  setActiveTab("Blogs");
-                  setExpand("Blogs");
-                }}>
-                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
-                <span className="pl-1">Blogs for Trading</span>
-              </NavLink>
-            </div>
-
- <div className="mt-4 text-gray-500 text-xs">
+           <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
@@ -906,11 +891,11 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   setActiveTab("Blogs");
                   setExpand("Blogs");
                 }}>
-                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <EditNoteIcon style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Blogs for Sewa</span>
               </NavLink>
             </div>
- <div className="mt-4 text-gray-500 text-xs">
+            <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
@@ -923,11 +908,11 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   setActiveTab("Blogs");
                   setExpand("Blogs");
                 }}>
-                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <EditNoteIcon style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Blogs for International</span>
               </NavLink>
             </div>
- <div className="mt-4 text-gray-500 text-xs">
+             <div className="mt-4 text-gray-500 text-xs">
               <NavLink
                 style={{
                   color: activeTab === "settings" ? "#c93a0e" : "#545e6f",
@@ -940,7 +925,7 @@ function SideNavBar({ expand, setExpand, activeTab, setActiveTab }) {
                   setActiveTab("Blogs");
                   setExpand("Blogs");
                 }}>
-                <SettingsOutlinedIcon style={{ transform: "scale(0.65)" }} />
+                <EditNoteIcon style={{ transform: "scale(0.65)" }} />
                 <span className="pl-1">Blogs for Billing</span>
               </NavLink>
             </div>
