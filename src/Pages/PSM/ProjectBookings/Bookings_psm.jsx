@@ -59,8 +59,8 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterOption, setFilterOption] = useState("");
-
   const [selectedDate, setSelectedDate] = useState(null);
+
   useEffect(() => {
     console.log("Bookings useEffects");
     fetchData();
@@ -328,9 +328,24 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
             <DatePicker
               selected={selectedDate}
               onChange={(date) => {
+                if (!date) {
+                    setSelectedDate(null);
+                    fetchData(1, searchQuery, null);
+                    return;
+                }
+            
+                // Convert the selected date to PST but keep it as YYYY-MM-DD
+                const day = String(date.getDate()).padStart(2, "0"); // Ensure two-digit day
+                const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based
+                const year = date.getFullYear();
+            
+                const formattedDate = `${year}-${month}-${day}`; // YYYY-MM-DD format
+            
                 setSelectedDate(date);
-                fetchData(1, searchQuery, date);
-              }}
+                fetchData(1, searchQuery, formattedDate);
+            }}
+            
+            
               className="w-full bg-white rounded-md py-3 pl-5 pr-12 shadow-md border-2 border-gray-100 cursor-pointer"
               placeholderText="Select Date"
               dateFormat="dd/MM/yyyy"
@@ -372,12 +387,12 @@ const Psm_Bookings = ({ setActiveTab, setExpand }) => {
                       {item?.phone}
                     </td>
                     <td className="text-center px-4 whitespace-nowrap">
-                      <button
+                      {LuserData.role === 'admin' ? <button
                         onClick={() => handleDelete(item?._id)}
                         className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                       >
                         Delete
-                      </button>
+                      </button> : (<div>Not Accessible</div>)}
                     </td>
                   </tr>
                 ))}
